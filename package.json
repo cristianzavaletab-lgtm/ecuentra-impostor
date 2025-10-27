@@ -12,9 +12,10 @@
   "author": "Cristian Zavaleta",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
-    "socket.io": "^4.7.5"
-  },
+  "express": "^4.18.2",
+  "socket.io": "^4.7.5",
+  "dotenv": "^16.4.5"
+},
   "devDependencies": {
     "nodemon": "^3.1.0"
   }
