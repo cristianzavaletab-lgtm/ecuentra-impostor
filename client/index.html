@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuentra al Impostor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Pantalla de inicio -->
+    <div id="homeScreen" class="screen active">
+        <div class="container">
+            <h1 class="title">🎭 Encuentra al Impostor</h1>
+            <div class="input-group">
+                <input type="text" id="nicknameInput" placeholder="Tu nickname" maxlength="15">
+            </div>
+            <div class="button-group">
+                <button id="createRoomBtn" class="btn btn-primary">Crear Sala</button>
+                <button id="joinRoomBtn" class="btn btn-secondary">Unirse a Sala</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla para unirse -->
+    <div id="joinScreen" class="screen">
+        <div class="container">
+            <h2>Unirse a Sala</h2>
+            <div class="input-group">
+                <input type="text" id="roomCodeInput" placeholder="Código de sala" maxlength="6">
+            </div>
+            <div class="button-group">
+                <button id="joinGameBtn" class="btn btn-primary">Unirse</button>
+                <button id="backToHomeBtn" class="btn btn-secondary">Volver</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla de lobby -->
+    <div id="lobbyScreen" class="screen">
+        <div class="container">
+            <h2>Sala: <span id="roomCodeDisplay"></span></h2>
+            <div class="category-selector" id="categorySelector">
+                <label>Categoría:</label>
+                <select id="categorySelect">
+                    <option value="futbol">⚽ Fútbol</option>
+                    <option value="comida">🍔 Comida</option>
+                    <option value="paises">🌍 Países</option>
+                    <option value="peliculas">🎬 Películas</option>
+                    <option value="animales">🦁 Animales</option>
+                    <option value="profesiones">💼 Profesiones</option>
+                    <option value="marcas">🏢 Marcas</option>
+                    <option value="videojuegos">🎮 Videojuegos</option>
+                </select>
+            </div>
+            <div id="playersContainer" class="players-grid"></div>
+            <div class="button-group">
+                <button id="startGameBtn" class="btn btn-primary" style="display: none;">Iniciar Juego</button>
+                <button id="leaveLobbyBtn" class="btn btn-secondary">Salir</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla de juego -->
+    <div id="gameScreen" class="screen">
+        <div class="container">
+            <div id="roleDisplay" class="role-card">
+                <h3>Tu rol:</h3>
+                <div id="roleText" class="role-text"></div>
+                <div id="categoryDisplay" class="category-display"></div>
+            </div>
+            
+            <div id="turnInfo" class="turn-info">
+                <h4>Turno de: <span id="currentPlayerName"></span></h4>
+                <div id="timerDisplay" class="timer">30</div>
+            </div>
+            
+            <div id="chatContainer" class="chat-container">
+                <div id="chatMessages" class="chat-messages"></div>
+            </div>
+            
+            <div class="description-controls">
+                <textarea id="descriptionInput" placeholder="Describe tu rol sin revelar la palabra exacta..." maxlength="200"></textarea>
+                <button id="sendDescriptionBtn" class="btn btn-primary">Enviar Descripción</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla de votación -->
+    <div id="votingScreen" class="screen">
+        <div class="container">
+            <h2>🗳️ ¿Quién es el impostor?</h2>
+            <div id="votingTimer" class="timer">15</div>
+            <div id="votingPlayers" class="players-grid"></div>
+        </div>
+    </div>
+
+    <!-- Pantalla de resultados -->
+    <div id="resultsScreen" class="screen">
+        <div class="container">
+            <h2 id="resultTitle"></h2>
+            <div id="impostorReveal" class="impostor-reveal"></div>
+            <div id="resultsTable" class="results-table"></div>
+            <button id="backToLobbyBtn" class="btn btn-primary">Volver al Lobby</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
